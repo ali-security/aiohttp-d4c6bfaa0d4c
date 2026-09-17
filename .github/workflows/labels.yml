@@ -1,13 +1,11 @@
 name: Labels
 on:
-  pull_request:
-    branches:
-      - 'master'
-    types: [labeled, opened, synchronize, reopened, unlabeled]
+  workflow_dispatch:
 
 jobs:
   backport:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     name: Backport label added
     if: ${{ github.event.pull_request.user.type != 'Bot' }}
     steps:

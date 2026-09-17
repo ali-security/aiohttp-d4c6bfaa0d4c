@@ -1,5 +1,6 @@
 name: Dependabot auto-merge
-on: pull_request_target
+on:
+  workflow_dispatch:
 
 permissions:
   pull-requests: write
@@ -8,6 +9,7 @@ permissions:
 jobs:
   dependabot:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     if: ${{ github.actor == 'dependabot[bot]' }}
     steps:
       - name: Dependabot metadata
